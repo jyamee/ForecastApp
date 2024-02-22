@@ -25,4 +25,52 @@ body {
   border: none;
   padding: 20px;
   border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+}
+
+header {
+  border-bottom: 1px solid #f9f7fe;
+  padding: 0 0 30px 0;
+}
+footer {
+  text-align: center;
+  border-bottom: 1px solid #f9f7fe;
+  padding: 40px 0 0 0;
+  font-size: 15px;
+}
+
+a {
+  color: rgb(177, 40, 177);
+}
+main {
+  padding: 30px 0 0 0;
+}
+.data {
+  display: flex;
+  justify-content: space-between;
+}
+.city {
+  font-size: 35px;
+  margin: 0;
+  line-height: 48px;
+}
+.time {
+  font-size: 15px;
+}
+strong {
+  color: rgb(221, 159, 169);
+}
+.temperature {
+  display: flex;
+}
+.app-value {
+  font-size: 60px;
+}
+.app-symbol {
+  margin-top: 20px;
+  font-size: 25px;
+}
+.app-icon {
+  margin-top: 20px;
 }
