@@ -20,7 +20,7 @@ body {
   font-size: 16px;
 }
 
-.search-form-output {
+.search-form-button {
   background-color: rgba(160, 10, 184, 0.432);
   border: none;
   padding: 20px;
@@ -59,7 +59,7 @@ main {
   font-size: 15px;
 }
 strong {
-  color: rgb(221, 159, 169);
+  color: rgb(2 21, 159, 169);
 }
 .temperature {
   display: flex;
