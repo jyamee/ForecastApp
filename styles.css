@@ -59,7 +59,7 @@ main {
   font-size: 15px;
 }
 strong {
-  color: rgb(2 21, 159, 169);
+  color: rgb(21, 159, 169);
 }
 .temperature {
   display: flex;
@@ -75,10 +75,36 @@ strong {
   margin-top: 20px;
 }
 
+.weather-forecast {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.forest-date {
+  text-align: center;
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+.forecast-icon {
+  font-size: 38px;
+  text-align: center;
+}
 .max {
-  color: rgb(90, 12, 51);
+  padding: 0 10px;
 }
 
 .min {
-  color: rgb(90, 12, 51);
+  padding: 0 10px;
+}
+
+.forecast-temperatures {
+  text-align: center;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  color: rgb(21, 159, 169);
 }
