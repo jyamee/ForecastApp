@@ -74,3 +74,11 @@ strong {
 .app-icon {
   margin-top: 20px;
 }
+
+.max {
+  color: rgb(90, 12, 51);
+}
+
+.min {
+  color: rgb(90, 12, 51);
+}
