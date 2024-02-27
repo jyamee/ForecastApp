@@ -90,8 +90,10 @@ strong {
 }
 
 .forecast-icon {
-  font-size: 38px;
+  width: 38px;
+  display: block;
   text-align: center;
+  margin: 0 auto;
 }
 .max {
   padding: 0 10px;
