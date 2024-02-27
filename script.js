@@ -4,40 +4,46 @@ function refreshWeather(response) {
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
-  let windElement = document.querySelector("#wind");
+  let windSpeedElement = document.querySelector("#wind-speed");
   let timeElement = document.querySelector("#time");
   let date = new Date(response.data.time * 1000);
+  let iconElement = document.querySelector("#icon");
 
-  timeElement.innerHTML = currentdate(date);
-  windElement.innerHTML = `${response.data.wind.speed}km/h`;
-  humidityElement.innerHTML = `${response.data.temperature.humidity} %`;
-  descriptionElement.innerHTML = response.data.condition.description;
   cityElement.innerHTML = response.data.city;
-
+  timeElement.innerHTML = formatDate(date);
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windSpeedElement.innerHTML = `${response.data.wind.speed}km/h`;
   temperatureElement.innerHTML = Math.round(temperature);
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
+
+  getForecast(response.data.city);
 }
 
-function currentdate(date) {
-  let hour = date.getHours();
+function formatDate(date) {
   let minutes = date.getMinutes();
+  let hours = date.getHours();
   let days = [
-    "sunday",
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday",
-    "saturday",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
   ];
-
   let day = days[date.getDay()];
 
-  return `${day} ${hour}:${minutes}`;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${day} ${hours}:${minutes}`;
 }
 
 function searchCity(city) {
-  let apiKey = "89624f36990b08aabeaatob0f874fe47";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  let apiKey = "b2a5adcct04b33178913oc335f405433";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(refreshWeather);
 }
 
@@ -55,14 +61,13 @@ function formatDay(timestamp) {
   return days[date.getDay()];
 }
 
-function getforecast(city) {
-  let apikey = "89624f36990b08aabeaatob0f874fe47";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apikey}&units=metric`;
-
-  axios(apiUrl).then(displayforecast);
+function getForecast(city) {
+  let apiKey = "b2a5adcct04b33178913oc335f405433";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
 }
 
-function displayforecast(response) {
+function displayForecast(response) {
   let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
@@ -73,12 +78,12 @@ function displayforecast(response) {
       <div class="weather-forecast-day">
         <div class="weather-forecast-date">${formatDay(day.time)}</div>
 
-        <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
-        <div class="forecast-temperature">
-          <div class="maximum">
+        <img src="${day.condition.icon_url}" class="forecast-icon" />
+        <div class="forecast-temperatures">
+          <div class="max">
             <strong>${Math.round(day.temperature.maximum)}º</strong>
           </div>
-          <div class="minimum">${Math.round(day.temperature.minimum)}º</div>
+          <div class="min">${Math.round(day.temperature.minimum)}º</div>
         </div>
       </div>
     `;
